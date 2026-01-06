@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnglishMaster - Learn Faster & Smarter</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Internal Styles for Home Page Redesign */
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        p {
+            line-height: 1.6;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: 0.3s;
+            padding: 20px 0;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .hero-img img {
+            width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: var(--white);
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            opacity: 0.6;
+            flex-wrap: wrap;
+        }
+
+        .trust-logos i {
+            font-size: 2rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        /* How It Works */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Learning Paths */
+        .path-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .path-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bg {
+            background: #eee;
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* Daily Word */
+        .word-widget {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .word-widget h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .word-widget h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .word-widget h4 {
+            color: var(--white);
+        }
+
+        .word-widget p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .blur-reveal {
+            filter: blur(8px);
+            cursor: pointer;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .blur-reveal.revealed {
+            filter: blur(0);
+            background: transparent;
+        }
+
+        /* Quiz Preview */
+        .quiz-preview {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: left;
+            background: none;
+        }
+
+        .quiz-option:hover,
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* Shop Preview */
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gray);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-icons a {
+            color: var(--white);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-img {
+                display: none;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .steps-grid,
+            .stats-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i> EnglishMaster
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lessons.html">Lessons</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="chat.html" style="color: #4361ee; font-weight: 700;">AI Chat</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="quiz.html" class="btn btn-secondary">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text fade-in-scroll">
+                <h1>Master English <br> <span class="highlight">Faster & Smarter</span></h1>
+                <p class="mb-4">Join the most interactive learning platform designed to help you speak confidently in 30
+                    days.</p>
+                <div class="hero-btns">
+                    <a href="lessons.html" class="btn btn-primary">Start Learning</a>
+                    <a href="quiz.html" class="btn btn-secondary" style="margin-left: 10px;">Take a Quiz</a>
+                </div>
+            </div>
+            <div class="hero-img fade-in-scroll">
+                <!-- Using FontAwesome as illustration placeholder -->
+                <div style="font-size: 15rem; color: var(--primary); text-align: center;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <p class="text-center mb-2" style="font-weight: 600; color: var(--gray);">TRUSTED BY 10,000+ LEARNERS</p>
+            <div class="trust-logos">
+                <div><i class="fab fa-google"></i> Google</div>
+                <div><i class="fab fa-amazon"></i> Amazon</div>
+                <div><i class="fab fa-spotify"></i> Spotify</div>
+                <div><i class="fab fa-microsoft"></i> Microsoft</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section-padding" id="features">
+        <div class="container">
+            <h2 class="text-center mb-4 fade-in-scroll">Why Choose EnglishMaster?</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in-scroll">
+                    <div class="icon-box"><i class="fas fa-brain"></i></div>
+                    <h3>Smart Learning</h3>
+                    <p>AI-driven curriculum that adapts to your learning pace and style.</p>
+                </div>
+                <div class="feature-card fade-in-scroll">
+                    <div class="icon-box"><i class="fas fa-volume-up"></i></div>
+                    <h3>Speaking Practice</h3>
+                    <p>Real-time pronunciation feedback to sound like a native speaker.</p>
+                </div>
+                <div class="feature-card fade-in-scroll">
+                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                    <h3>Track Progress</h3>
+                    <p>Detailed analytics to visualize your daily improvements.</p>
+                </div>
+                <div class="feature-card fade-in-scroll">
+                    <div class="icon-box"><i class="fas fa-users"></i></div>
+                    <h3>Community</h3>
+                    <p>Join thousands of learners in our global discussion forums.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-padding" style="background: var(--light);">
+        <div class="container">
+            <h2 class="text-center mb-4 fade-in-scroll">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card fade-in-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Learn</h3>
+                    <p>Read interactive lessons tailored to your level.</p>
+                </div>
+                <div class="step-card fade-in-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Practice</h3>
+                    <p>Complete quizzes and exercises to reinforce knowledge.</p>
+                </div>
+                <div class="step-card fade-in-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Improve</h3>
+                    <p>Track your stats and level up your English skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-4 fade-in-scroll">Choose Your Path</h2>
+            <div class="features-grid">
+                <div class="path-card fade-in-scroll">
+                    <h3>Beginner</h3>
+                    <p>Start from scratch. Learn basics.</p>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">20% Popularity</p>
+                </div>
+                <div class="path-card fade-in-scroll">
+                    <h3>Intermediate</h3>
+                    <p>Improve grammar and vocabulary.</p>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">65% Popularity</p>
+                </div>
+                <div class="path-card fade-in-scroll">
+                    <h3>Advanced</h3>
+                    <p>Master business and academic English.</p>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 15%"></div>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">15% Popularity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Tip -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="word-widget fade-in-scroll" style="background: linear-gradient(135deg, #4361ee, #f72585);">
+                <h4>💡 Daily Learning Tip</h4>
+                <h2 id="tip-title" style="font-size: 2rem;">Shadowing Technique</h2>
+                <div class="mb-4">
+                    <p id="tip-content" style="font-size: 1.2rem; line-height: 1.6;">Listen to a native speaker and
+                        repeat exactly what they say as they are speaking. This improves speed and intonation instantly.
+                    </p>
+                </div>
+                <button id="new-tip-btn" class="btn btn-secondary"
+                    style="border-color: white; color: white; background: transparent;">Next Tip</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Preview -->
+    <section class="section-padding" style="background: var(--light);">
+        <div class="container">
+            <div class="quiz-preview fade-in-scroll text-center">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; color: var(--gray);">
+                    <span><i class="fas fa-clock"></i> 00:15</span>
+                    <span>Question 1/5</span>
+                </div>
+                <h3 class="mb-4">Which sentence is correct?</h3>
+                <button class="quiz-option">She don't like apples.</button>
+                <button class="quiz-option">She doesn't like apples.</button>
+                <button class="quiz-option">She not like apples.</button>
+                <a href="quiz.html" class="btn btn-primary mt-4">Take Full Quiz</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="fade-in-scroll">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <p>Students</p>
+                </div>
+                <div class="fade-in-scroll">
+                    <div class="stat-number" data-target="500">0</div>
+                    <p>Lessons</p>
+                </div>
+                <div class="fade-in-scroll">
+                    <div class="stat-number" data-target="50">0</div>
+                    <p>Teachers</p>
+                </div>
+                <div class="fade-in-scroll">
+                    <div class="stat-number" data-target="98">0</div>
+                    <p>Success Rate (%)</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Animated Floating Icons Section -->
+    <section class="section-padding floating-section" style="background: var(--light); overflow: hidden;">
+        <div class="container text-center" style="position: relative;">
+            <h2 class="fade-in-scroll">Unlock Your Potential</h2>
+            <p class="mb-4 fade-in-scroll" style="max-width: 600px; margin: 0 auto 30px;">Learning english opens doors
+                to new opportunities.</p>
+
+            <div class="floating-container">
+                <div class="float-icon i1"><i class="fas fa-globe-americas"></i></div>
+                <div class="float-icon i2"><i class="fas fa-comment-dots"></i></div>
+                <div class="float-icon i3"><i class="fas fa-graduation-cap"></i></div>
+                <a href="quiz.html" class="btn btn-primary pulse-btn">Test Your Level Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rotating Text Animation Section -->
+    <section class="section-padding" style="background: var(--dark-bg); color: var(--white); overflow: hidden;">
+        <div class="container text-center">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">
+                English for
+                <span class="rotating-span">
+                    <span>Business</span>
+                    <span>Travel</span>
+                    <span>Success</span>
+                    <span>Business</span>
+                </span>
+            </h2>
+            <p style="color: #adb5bd;">Adapt your skills to every situation.</p>
+        </div>
+    </section>
+
+    <!-- Shop Preview -->
+    <section class="section-padding" style="background: var(--light);">
+        <div class="container">
+            <h2 class="text-center mb-4 fade-in-scroll">Premium Resources</h2>
+            <div class="features-grid">
+                <div class="product-card fade-in-scroll">
+                    <img src="images/ebooks/7_secrets.png" alt="7 Secrets for ESL Learners"
+                        style="width: 100%; height: 200px; object-fit: cover;">
+                    <div class="product-info">
+                        <h3>7 Secrets for ESL Learners</h3>
+                        <p style="color: #3f37c9; font-weight: 700;">$4.99</p>
+                        <a href="shop.html" class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">View
+                            in Shop</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in-scroll">
+                    <img src="images/ebooks/business.png" alt="Business English Vocabulary"
+                        style="width: 100%; height: 200px; object-fit: cover;">
+                    <div class="product-info">
+                        <h3>Business English Vocabulary</h3>
+                        <p style="color: #3f37c9; font-weight: 700;">$8.99</p>
+                        <a href="shop.html" class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">View
+                            in Shop</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in-scroll">
+                    <img src="images/ebooks/advanced_grammar.png" alt="IELTS Preparation Guide"
+                        style="width: 100%; height: 200px; object-fit: cover;">
+                    <div class="product-info">
+                        <h3>IELTS Preparation Guide</h3>
+                        <p style="color: #3f37c9; font-weight: 700;">$10.00</p>
+                        <a href="shop.html" class="btn btn-secondary" style="margin-top: 10px; font-size: 0.8rem;">View
+                            in Shop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-4 fade-in-scroll">What Our Students Say</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in-scroll" style="text-align: left;">
+                    <div style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px;"><i
+                            class="fas fa-quote-left"></i></div>
+                    <p class="mb-4" style="font-style: italic;">"EnglishMaster changed my life. I finally feel confident
+                        speaking at work!"</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div
+                            style="width: 50px; height: 50px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--gray);">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0; font-size: 1rem;">Sarah M.</h4>
+                            <p style="font-size: 0.8rem; margin-bottom: 0;">Marketing Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card fade-in-scroll" style="text-align: left;">
+                    <div style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px;"><i
+                            class="fas fa-quote-left"></i></div>
+                    <p class="mb-4" style="font-style: italic;">"The quizzes are so fun, I don't even realize I'm
+                        studying. Highly recommended."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div
+                            style="width: 50px; height: 50px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--gray);">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0; font-size: 1rem;">David L.</h4>
+                            <p style="font-size: 0.8rem; margin-bottom: 0;">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card fade-in-scroll" style="text-align: left;">
+                    <div style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px;"><i
+                            class="fas fa-quote-left"></i></div>
+                    <p class="mb-4" style="font-style: italic;">"I love the daily words. It's a small habit that makes a
+                        big difference."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div
+                            style="width: 50px; height: 50px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--gray);">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0; font-size: 1rem;">Emma R.</h4>
+                            <p style="font-size: 0.8rem; margin-bottom: 0;">Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="section-padding text-center" style="background: var(--dark); color: var(--white);">
+        <div class="container">
+            <h2 class="mb-4">Ready to Start Your Journey?</h2>
+            <p class="mb-4" style="color: #adb5bd; max-width: 600px; margin: 0 auto 30px;">Join thousands of students
+                who are already mastering English with our platform.</p>
+            <a href="lessons.html" class="btn btn-primary">Get Started Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>EnglishMaster</h3>
+                <p style="color: #adb5bd;">Your ultimate destination to master the English language. Interactive
+                    lessons, quizzes, and resources tailored for your success.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lessons.html">Lessons</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dev.by.amine?igsh=MWJxbGVmbDF1ajVzaQ==" target="_blank"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/2120776917221" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="footer-bottom">
+            <p style="color: #6c757d;">&copy; 2026 EnglishMaster. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Daily Tip Logic
+        const tips = [
+            { title: "Shadowing Technique", content: "Listen to a native speaker and repeat exactly what they say as they are speaking. This improves speed and intonation instantly." },
+            { title: "Think in English", content: "Stop translating! Start naming objects around you in English to train your brain to access vocabulary faster." },
+            { title: "Record Yourself", content: "Use your phone to record your speaking. Listening to your own voice helps identifying pronunciation errors you miss while talking." },
+            { title: "The 5-Minute Rule", content: "Study for just 5 minutes a day. Consistency beats intensity. It's better to study a little every day than once a week for hours." },
+            { title: "Context Learning", content: "Don't memorize isolated words. Learn phrases and sentences. Context helps you remember meaning and usage naturally." }
+        ];
+
+        const btn = document.getElementById('new-tip-btn');
+        const title = document.getElementById('tip-title');
+        const content = document.getElementById('tip-content');
+
+        if (btn) {
+            btn.addEventListener('click', () => {
+                // Random Tip that is different from current
+                let randomIndex;
+                do {
+                    randomIndex = Math.floor(Math.random() * tips.length);
+                } while (title.textContent === tips[randomIndex].title);
+
+                // Animate out
+                title.style.opacity = 0;
+                content.style.opacity = 0;
+
+                setTimeout(() => {
+                    title.textContent = tips[randomIndex].title;
+                    content.textContent = tips[randomIndex].content;
+
+                    // Animate in
+                    title.style.opacity = 1;
+                    content.style.opacity = 1;
+                }, 300);
+            });
+
+            // Transitions
+            title.style.transition = "opacity 0.3s";
+            content.style.transition = "opacity 0.3s";
+        }
+
+        // Quiz Preview Interaction
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach(opt => {
+            opt.addEventListener('click', function () {
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated Counters
+        const statsSection = document.querySelector('.stats-grid');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !statsAnimated) {
+                statsAnimated = true;
+                document.querySelectorAll('.stat-number').forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const increment = target / 50;
+
+                    const updateCounter = () => {
+                        const c = +counter.innerText;
+                        if (c < target) {
+                            counter.innerText = Math.ceil(c + increment);
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            counter.innerText = target + "+";
+                        }
+                    };
+                    updateCounter();
+                });
+            }
+        });
+
+        if (statsSection) statsObserver.observe(statsSection);
+    </script>
+
+
+</body>
+
+</html>

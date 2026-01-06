@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnglishMaster - AI Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Chat Page Specific Styles */
+        body {
+            background-color: #f0f2f5;
+        }
+        
+        .chat-section {
+            padding: 40px 0;
+            min-height: calc(100vh - 160px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .chat-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            border: 1px solid #e1e4e8;
+        }
+
+        .chat-header-custom {
+            background: #4361ee;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .ai-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ai-avatar {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4361ee;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .ai-info h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .ai-info p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        #n8n-chat {
+            flex: 1;
+            position: relative;
+            background: #fff;
+            min-height: 0; /* Crucial for flexbox scrolling */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i> EnglishMaster
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lessons.html">Lessons</a></li>
+                <li><a href="chat.html" class="active">AI Chat</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="quiz.html" class="btn btn-secondary">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="chat-section">
+        <div class="container">
+            <div class="chat-wrapper">
+                <div class="chat-header-custom">
+                    <div class="ai-profile">
+                        <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="ai-info">
+                            <h3>English Learning Assistant</h3>
+                            <p>Online • Ready to help</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="n8n-chat"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>EnglishMaster</h3>
+                <p>Your ultimate destination to master the English language. Interactive lessons, quizzes, and resources tailored for your success. Join our community today!</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lessons.html">Lessons</a></li>
+                    <li><a href="chat.html">AI Chat</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dev.by.amine?igsh=MWJxbGVmbDF1ajVzaQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/2120776917221" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EnglishMaster. All rights reserved. | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    
+    <!-- N8N Chatbot Code -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        
+        createChat({
+            target: '#n8n-chat',
+            mode: 'fullscreen',
+            webhookUrl: 'https://brodox.app.n8n.cloud/webhook/1ea0615e-12e3-4d2c-a432-bc6c3c59d756',
+            initialMessages: [
+                'Hello! I am your English learning assistant. How can I help you today?'
+            ],
+            i18n: {
+                en: {
+                    title: 'English Learning Assistant',
+                    subtitle: 'Practice your English',
+                    footer: '',
+                    inputPlaceholder: 'Type in English...',
+                }
+            },
+            showWelcomeScreen: false
+        });
+    </script>
+</body>
+</html>
